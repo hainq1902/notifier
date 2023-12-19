@@ -16,3 +16,6 @@ In charge of frontend for notifier
 ## Deployment
 
 ## Local run
+
+### Install minikube
+Follow [minikube get started](https://minikube.sigs.k8s.io/docs/start/) for installation instruction. 
