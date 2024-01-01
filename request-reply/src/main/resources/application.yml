@@ -1,0 +1,19 @@
+camel:
+  springboot:
+    name: request-reply
+  servlet:
+    mapping:
+      context-path: /requestreply/*
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, health, camelroutes
+  endpoint:
+    health:
+      enabled: true
+    camelroutes:
+      enabled: true
+      read-only: true
+

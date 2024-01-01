@@ -1,13 +1,16 @@
-package com.notifier.requestreply;
+package com.notifier;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RequestReplyApplication {
+public class MySpringBootApplication {
 
+    /**
+     * A main method to start this application.
+     */
     public static void main(String[] args) {
-        SpringApplication.run(RequestReplyApplication.class, args);
+        SpringApplication.run(MySpringBootApplication.class, args);
     }
 
 }
