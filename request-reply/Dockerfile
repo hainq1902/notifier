@@ -1,10 +1,15 @@
 #
-# Package stage
+# Build stage
 #
+FROM 3.9.6-eclipse-temurin-17 AS build
+COPY src /home/app/src
+COPY pom.xml /home/app
+RUN mvn -f /home/app/pom.xml clean package
+
+#
+# Package stage
+# TODO create user to avoid running by root
 FROM eclipse-temurin:17-jdk-jammy
-ENV HOME=/usr/app
-RUN mkdir -p $HOME
-WORKDIR $HOME
-COPY ./target/*.jar /app/runner.jar
+COPY --from=build /home/app/target/*.jar /usr/local/lib/runner.jar
 EXPOSE 8080
-ENTRYPOINT java -jar /app/runner.jar
+ENTRYPOINT ["java","-jar","/usr/local/lib/runner.jar"]
