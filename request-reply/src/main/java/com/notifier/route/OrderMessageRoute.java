@@ -15,9 +15,11 @@ public class OrderMessageRoute extends RouteBuilder {
 
         from("direct:pub")
                 .removeHeaders("*")
-                .to("nats:sms.order?servers=127.0.0.1:49915")
+                .to("nats:sms.order?servers=nats-svc:4222")
                 .transform().constant("Order received!");
     }
+//    nats-svc.nats-ns.svc.cluster.local
+//    my-svc.my-namespace.svc.cluster-domain.example
 
 }
 

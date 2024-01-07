@@ -1,10 +1,10 @@
-package com.notifier.backend;
+package com.notifier.backend.notifierbackend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class NotifiderBackendApplicationTests {
+class NotifierBackendApplicationTests {
 
     @Test
     void contextLoads() {

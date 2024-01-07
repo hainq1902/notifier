@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nats
+  name: nats-nodeport-svc
+spec:
+  ports:
+    - port: 4222
+      protocol: TCP
+      targetPort: 4222
+      nodePort: 32001
+  selector:
+    app: nats
+  type: NodePort

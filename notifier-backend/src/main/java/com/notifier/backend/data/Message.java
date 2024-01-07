@@ -1,4 +1,4 @@
-package com.notifier.data;
+package com.notifier.backend.data;
 
 import java.time.LocalDateTime;
 

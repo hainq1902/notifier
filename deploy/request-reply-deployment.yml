@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: request-reply
+  labels:
+    app: request-reply
+spec:
+  replicas: 1
+  strategy: {}
+  selector:
+    matchLabels:
+      app: request-reply
+  template:
+    metadata:
+      labels:
+        app: request-reply
+    spec:
+      containers:
+        - name: request-reply
+          image: l3marc/request-reply:latest
+          ports:
+            - containerPort: 8080

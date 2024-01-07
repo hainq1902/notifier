@@ -8,4 +8,4 @@ spec:
   capacity:
     storage: 1Gi
   hostPath:
-    path: /data/mongo
+    path: /Users/Shared/projects/notifier/mongo-data

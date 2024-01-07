@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module type="WEB_MODULE" version="4">
+<module type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$/notifier-frontend">
-      <excludeFolder url="file://$MODULE_DIR$/notifier-frontend/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/notifier-frontend/tmp" />
-    </content>
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="SonarLintModuleSettings">
-    <option name="uniqueId" value="b3acdcc4-a239-42fd-bf9f-4442a228268e" />
+    <option name="uniqueId" value="63a4f14d-70ed-4a3b-9cb9-b696138f805a" />
   </component>
 </module>

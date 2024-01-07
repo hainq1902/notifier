@@ -1,0 +1,21 @@
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: info, health, camelroutes
+#  endpoint:
+#    health:
+#      enabled: true
+#    camelroutes:
+#      enabled: true
+#      read-only: true
+
+server:
+  port: 8081
+
+spring:
+  data:
+    mongodb:
+#      uri: mongodb://mongo-svc:27017/smsorder
+      uri: mongodb://adminuser:password123@mongo-svc:27017/smsorder?authSource=admin
+
