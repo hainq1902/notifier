@@ -11,6 +11,8 @@ public class SMSOrder {
     private String id;
     private String message;
     private OrderStatus status;
+
+    private LocalDateTime processedTime;
     private LocalDateTime createdTime;
 
     public SMSOrder(String message) {
@@ -45,6 +47,14 @@ public class SMSOrder {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public LocalDateTime getProcessedTime() {
+        return processedTime;
+    }
+
+    public void setProcessedTime(LocalDateTime processedTime) {
+        this.processedTime = processedTime;
     }
 
     public LocalDateTime getCreatedTime() {

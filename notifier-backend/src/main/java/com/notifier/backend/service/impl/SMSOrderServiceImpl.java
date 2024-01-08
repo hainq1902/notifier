@@ -9,6 +9,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Service("smsOrderService")
@@ -34,12 +35,19 @@ public class SMSOrderServiceImpl implements SMSOrderService {
     }
 
     @Override
+    public Flux<SMSOrder> findSMSOrder() {
+        return repository.findAllByCreatedTimeGreaterThanEqualOrderByStatusDescProcessedTimeDescCreatedTime(
+                                                                                        LocalDate.now().atStartOfDay());
+    }
+
+    @Override
     public String updateOrder(String orderId, SMSOrder updatedOrder) {
         repository.findById(orderId)
                   .switchIfEmpty(Mono.error(new Exception("ORDER_NOT_FOUND")))
                   .map(order -> {
                       if (Objects.nonNull(updatedOrder.getStatus())) {
                           order.setStatus(updatedOrder.getStatus());
+                          order.setProcessedTime(LocalDateTime.now());
                       }
                       return order;
                   })

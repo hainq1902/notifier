@@ -12,4 +12,7 @@ import java.time.LocalDateTime;
 public interface SMSOrderRepository extends ReactiveMongoRepository<SMSOrder, String> {
     Flux<SMSOrder> findAllByStatusAndCreatedTimeGreaterThanEqualOrderByCreatedTime(OrderStatus orderStatus,
                                                                                    LocalDateTime createdTime);
+
+    Flux<SMSOrder> findAllByCreatedTimeGreaterThanEqualOrderByStatusDescProcessedTimeDescCreatedTime(
+                                                                                        LocalDateTime createdTime);
 }

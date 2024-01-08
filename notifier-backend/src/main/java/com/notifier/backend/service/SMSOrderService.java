@@ -9,5 +9,7 @@ public interface SMSOrderService {
     String placeOrder(String message);
     Flux<SMSOrder> findSMSOrder(OrderStatus status);
 
+    Flux<SMSOrder> findSMSOrder();
+
     String updateOrder(String orderId, SMSOrder order);
 }

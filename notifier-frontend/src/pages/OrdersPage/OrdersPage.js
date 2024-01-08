@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import OrdersCard from '../../components/OrdersCard/OrdersCard';
 
-
-
 const OrdersPage = () => {
     const [orderList, setOrderList] = useState([]);
+    const [alert, setAlert] = useState(new Audio(require('../../assets/audio/alert.mp3')));
 
     useEffect(() => {
         const eventSource = new EventSource('http://localhost:8081/orders');
@@ -26,20 +25,54 @@ const OrdersPage = () => {
         }
     }, []);
 
+    useEffect(() => {
+        if (orderList.length > 0) {
+            if (orderList.findIndex((order) => order.status === 'NEW') >= 0) {
+                alert.play();
+            } else {
+                alert.pause();
+            }
+        }
+
+    }, [orderList]);
+
     return (
         <>
             <div className="card-container">
                 <div className="card">
-                    {orderList.map((order) => (
-                        <OrdersCard
-                            key={order.id}
-                            orderId={order.id}
-                            message={order.message}
-                            createdTime={order.createdTime}
-                        />
-                    ))}
+                    {orderList
+                        .filter((order) => order.status === 'NEW')
+                        .map((order) => (
+                                <OrdersCard
+                                    key={order.id}
+                                    orderId={order.id}
+                                    message={order.message}
+                                    status={order.status}
+                                    createdTime={order.createdTime}
+                                />))
+                    }
                 </div>
-
+            </div>
+            <hr style={{
+                color: 'black',
+                backgroundColor: 'black',
+                height: 5
+            }} />
+            <div className="card-container">
+                <div className="card">
+                    {orderList
+                        .filter((order) => order.status === 'DONE')
+                        .map((order) => (
+                            <OrdersCard
+                                key={order.id}
+                                orderId={order.id}
+                                message={order.message}
+                                status={order.status}
+                                createdTime={order.createdTime}
+                                processedTime={order.processedTime}
+                            />))
+                    }
+                </div>
             </div>
 
         </>

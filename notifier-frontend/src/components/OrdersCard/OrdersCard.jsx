@@ -5,7 +5,7 @@ import axios from "axios";
 
 const url = (orderId) => `http://localhost:8081/orders/${orderId}`;
 
-const OrdersCard = ({orderId, message, createdTime}) => {
+const OrdersCard = ({orderId, message, status, createdTime, processedTime}) => {
     const [isSending, setSending] = useState(false);
     const [disabled, setDisabled] = useState(false);
 
@@ -41,14 +41,16 @@ const OrdersCard = ({orderId, message, createdTime}) => {
                     <div className="speaker-card">
                         <div className="speaker-info">
                             <p>{message}</p>
-                            <span>{createdTime}</span>
+                            {processedTime && <div>Processed: {processedTime}</div>}
+                            <div>Created: {createdTime}</div>
                         </div>
 
                     </div>
-
-                    <div>
-                        <button disabled={isSending} onClick={handleOrder}>Got It!</button>
-                    </div>
+                    {status === 'NEW' &&
+                        <div>
+                            <button disabled={isSending} onClick={handleOrder}>Got It!</button>
+                        </div>
+                    }
                 </div>
             </>
         )

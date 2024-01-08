@@ -19,7 +19,6 @@ import java.time.Duration;
 
 @RestController
 public class SMSOrderController {
-    private static final int DELAY_PER_ITEM_MS = 100;
 
     private final SMSOrderService smsOrderService;
 
@@ -31,8 +30,7 @@ public class SMSOrderController {
 //            , produces = MediaType.TEXT_EVENT_STREAM_VALUE
     )
     public Flux<SMSOrder> getOrders() {
-        return smsOrderService.findSMSOrder(OrderStatus.NEW);
-//        return smsOrderService.findSMSOrder(OrderStatus.NEW).delayElements(Duration.ofMillis(DELAY_PER_ITEM_MS));
+        return smsOrderService.findSMSOrder();
     }
 
     @PostMapping(path = "/orders/{orderId}",
