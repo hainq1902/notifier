@@ -26,20 +26,21 @@ const OrdersPage = () => {
     }, []);
 
     useEffect(() => {
-        if (orderList.length > 0) {
-            if (orderList.findIndex((order) => order.status === 'NEW') >= 0) {
-                alert.play();
-            } else {
-                alert.pause();
-            }
+        if (orderList.findIndex((order) => order.status === 'NEW') >= 0) {
+            alert.play();
+        } else {
+            alert.pause();
         }
 
     }, [orderList]);
 
     return (
         <>
-            <div className="card-container">
-                <div className="card">
+            <div className="container">
+                <div className="card-container">
+
+                    <div><h2> NEW </h2></div>
+                    <hr />
                     {orderList
                         .filter((order) => order.status === 'NEW')
                         .map((order) => (
@@ -51,15 +52,16 @@ const OrdersPage = () => {
                                     createdTime={order.createdTime}
                                 />))
                     }
+
+                    {
+                        (orderList.findIndex((order) => order.status === 'NEW') < 0) &&
+                                                <div className='placeholder' />
+                    }
                 </div>
-            </div>
-            <hr style={{
-                color: 'black',
-                backgroundColor: 'black',
-                height: 5
-            }} />
-            <div className="card-container">
-                <div className="card">
+                <hr className='vertical-separator'/>
+                <div className="card-container">
+                    <div><h2> DONE </h2></div>
+                    <hr />
                     {orderList
                         .filter((order) => order.status === 'DONE')
                         .map((order) => (
@@ -72,9 +74,16 @@ const OrdersPage = () => {
                                 processedTime={order.processedTime}
                             />))
                     }
-                </div>
-            </div>
 
+                    {
+                        (orderList.findIndex((order) => order.status === 'DONE') < 0) &&
+                                                <div className='placeholder' />
+                    }
+                </div>
+
+
+
+            </div>
         </>
     )
 

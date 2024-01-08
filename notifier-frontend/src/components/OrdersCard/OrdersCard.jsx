@@ -37,17 +37,18 @@ const OrdersCard = ({orderId, message, status, createdTime, processedTime}) => {
     return (
         !disabled && (
             <>
-                <div className="card">
-                    <div className="speaker-card">
-                        <div className="speaker-info">
-                            <p>{message}</p>
-                            {processedTime && <div>Processed: {processedTime}</div>}
-                            <div>Created: {createdTime}</div>
+                <div className={(status === 'NEW') ? 'card card-active' : 'card card-disabled'}>
+                    <div className="card-info">
+                        <div><p>{message}</p></div>
+                        <div className='card-meta'>
+                            {processedTime && <div>Processed: {new Date(processedTime).toLocaleString()}</div>}
+                            <div>Created: {new Date(createdTime).toLocaleString()}</div>
                         </div>
+
 
                     </div>
                     {status === 'NEW' &&
-                        <div>
+                        <div className="card-footer">
                             <button disabled={isSending} onClick={handleOrder}>Got It!</button>
                         </div>
                     }

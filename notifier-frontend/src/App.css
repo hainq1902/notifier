@@ -36,3 +36,65 @@
     transform: rotate(360deg);
   }
 }
+
+.container {
+  display: flex;
+  width: 70%;
+  margin: auto;
+}
+
+.card-container {
+  flex: 1;
+  /*border: 2px dashed red;*/
+  margin: 2px;
+}
+
+.card {
+  padding: 0 5px 5px 5px;
+  /*outline: dashed 2px goldenrod;*/
+  margin: 5px 5px 5px 5px;
+}
+
+.card-footer {
+  padding: 1%;
+}
+
+.card-footer button {
+  font-size: large;
+}
+
+.card-meta {
+  padding: 1%;
+  color: gray;
+  font-style: italic;
+}
+
+.card-info div {
+  padding: 2px;
+}
+
+.card-info p {
+  font-size: larger;
+}
+
+.card-active {
+  background-color: lightskyblue;
+}
+
+.card-disabled {
+  background-color: lightgray;
+}
+
+div h2 {
+  text-align: center;
+}
+
+.placeholder {
+  color: darkgray;
+  text-align: center;
+  font-size: large;
+  padding: 10px;
+}
+.placeholder:after {
+  content: 'The content is empty.';
+}
