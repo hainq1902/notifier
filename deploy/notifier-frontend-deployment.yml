@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notifier-frontend
+  labels:
+    app: notifier-frontend
+spec:
+  replicas: 1
+  strategy: {}
+  selector:
+    matchLabels:
+      app: notifier-frontend
+  template:
+    metadata:
+      labels:
+        app: notifier-frontend
+    spec:
+      containers:
+        - name: notifier-frontend
+          image: l3marc/notifier-frontend:latest
+          ports:
+            - containerPort: 80

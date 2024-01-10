@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: request-reply
+  name: request-reply-nodeport-svc
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+      nodePort: 32001
+  selector:
+    app: request-reply
+  type: NodePort

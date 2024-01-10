@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 
-const url = (orderId) => `http://localhost:8081/orders/${orderId}`;
+const url = (orderId) => `http://notifier-backend:32002/orders/${orderId}`;
 
 const OrdersCard = ({orderId, message, status, createdTime, processedTime}) => {
     const [isSending, setSending] = useState(false);

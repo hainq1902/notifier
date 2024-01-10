@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notifier-backend
+  labels:
+    app: notifier-backend
+spec:
+  replicas: 1
+  strategy: {}
+  selector:
+    matchLabels:
+      app: notifier-backend
+  template:
+    metadata:
+      labels:
+        app: notifier-backend
+    spec:
+      containers:
+        - name: notifier-backend
+          image: l3marc/notifier-backend:latest
+          ports:
+            - containerPort: 8081

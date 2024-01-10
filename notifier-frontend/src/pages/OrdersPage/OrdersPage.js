@@ -6,7 +6,7 @@ const OrdersPage = () => {
     const [alert, setAlert] = useState(new Audio(require('../../assets/audio/alert.mp3')));
 
     useEffect(() => {
-        const eventSource = new EventSource('http://localhost:8081/orders');
+        const eventSource = new EventSource('http://notifier-backend:32002/orders');
         eventSource.onopen = (event) => {
             setOrderList([]);
             // console.log('open', event);

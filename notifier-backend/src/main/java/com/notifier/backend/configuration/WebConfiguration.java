@@ -17,6 +17,9 @@ public class WebConfiguration {
         config.setAllowCredentials(true);
         config.addAllowedOrigin("http://notifier-frontend-svc:3000");
         config.addAllowedOrigin("http://localhost:3000");
+        config.addAllowedOrigin("http://localhost:80");
+        config.addAllowedOrigin("http://notifier:80");
+        config.addAllowedOrigin("http://notifier:32000");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
 
